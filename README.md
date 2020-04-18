@@ -1,50 +1,54 @@
-# msingi
+# Msingi Library
+
 Radix tree implementation in Golang
 
 # Mutable Radix
+
 Provides the `radix` package that implements a [radix tree](http://en.wikipedia.org/wiki/Radix_tree).
 The package only provides a single `Tree` implementation, optimized for sparse nodes.
 
 As a radix tree, it provides the following:
- * O(k) operations. In many cases, this can be faster than a hash table since
-   the hash function is an O(k) operation, and hash tables have very poor cache locality.
- * Minimum / Maximum value lookups
- * Ordered iteration
- 
- Example
- =======
- 
- Below is a simple example of usage
- 
- ```go
- // Create a tree
- r := radix.New()
- r.Insert("foo", 1)
- r.Insert("bar", 2)
- r.Insert("foobar", 2)
- 
- // Find the longest prefix match
- m, _, _ := r.LongestPrefix("foozip")
- if m != "foo" {
-     panic("should be foo")
- }
- ```
- 
- # Immutable Radix
+
+- O(k) operations. In many cases, this can be faster than a hash table since
+  the hash function is an O(k) operation, and hash tables have very poor cache locality.
+- Minimum / Maximum value lookups
+- Ordered iteration
+
+Example
+=======
+
+Below is a simple example of usage
+
+```go
+// Create a tree
+r := radix.New()
+r.Insert("foo", 1)
+r.Insert("bar", 2)
+r.Insert("foobar", 2)
+
+// Find the longest prefix match
+m, _, _ := r.LongestPrefix("foozip")
+if m != "foo" {
+    panic("should be foo")
+}
+```
+
+# Immutable Radix
+
 Provides the `iradix` package that implements an immutable [radix tree](http://en.wikipedia.org/wiki/Radix_tree).
 The package only provides a single `Tree` implementation, optimized for sparse nodes.
 
 As a radix tree, it provides the following:
- * O(k) operations. In many cases, this can be faster than a hash table since
-   the hash function is an O(k) operation, and hash tables have very poor cache locality.
- * Minimum / Maximum value lookups
- * Ordered iteration
+
+- O(k) operations. In many cases, this can be faster than a hash table since
+  the hash function is an O(k) operation, and hash tables have very poor cache locality.
+- Minimum / Maximum value lookups
+- Ordered iteration
 
 A tree supports using a transaction to batch multiple updates (insert, delete)
 in a more efficient manner than performing each operation one at a time.
 
-Example
-=======
+# Example
 
 Below is a simple example of usage
 

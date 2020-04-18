@@ -2,13 +2,12 @@ package iradix
 
 import (
 	"fmt"
+	"github.com/wondenge/kitambulisho"
 	"math/rand"
 	"reflect"
 	"sort"
 	"testing"
 	"testing/quick"
-
-	"github.com/hashicorp/go-uuid"
 )
 
 func CopyTree(t *Tree) *Tree {
@@ -57,7 +56,7 @@ func TestRadix_HugeTxn(t *testing.T) {
 	txn1 := r.Txn()
 	var expect []string
 	for i := 0; i < defaultModifiedCache*100; i++ {
-		gen, err := uuid.GenerateUUID()
+		gen, err := kitambulisho.GenerateUUID()
 		if err != nil {
 			t.Fatalf("err: %v", err)
 		}
@@ -90,7 +89,7 @@ func TestRadix(t *testing.T) {
 	var min, max string
 	inp := make(map[string]interface{})
 	for i := 0; i < 1000; i++ {
-		gen, err := uuid.GenerateUUID()
+		gen, err := kitambulisho.GenerateUUID()
 		if err != nil {
 			t.Fatalf("err: %v", err)
 		}
